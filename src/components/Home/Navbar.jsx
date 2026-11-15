@@ -21,12 +21,15 @@ export default function Navbar() {
           <a className={active === label ? "active" : ""} key={label} href={href}
             onClick={() => { setActive(label); setOpen(false); }}>{label}</a>
         ))}
-        <a className="gt-mobile-book" href="/bookservice" onClick={() => setOpen(false)}>Reserve your visit <span>↗</span></a>
+        <a className="gt-mobile-book" href="/appointments" onClick={() => setOpen(false)}>My Appointments <span>↗</span></a>
+        <a className="gt-mobile-book" href="/bookservice" onClick={() => setOpen(false)}>Book Your Slot <span>↗</span></a>
       </nav>
 
       <div className="gt-header-actions">
-        <a className="gt-booked-link" href="/appointments">My appointments <span>↗</span></a>
-        <a className="gt-gold-btn gt-header-book" href="/bookservice">Book an experience <span>↗</span></a>
+        {/* <a className="gt-booked-link" href="/appointments">My appointments <span>↗</span></a> */}
+        
+        <a className="gt-gold-btn gt-header-book" href="/appointments">My Appointments <span>↗</span></a>
+        <a className="gt-gold-btn gt-header-book" href="/bookservice">Book Your Slot <span>↗</span></a>
       </div>
 
       <button type="button" className={`gt-menu-btn ${open ? "is-open" : ""}`} onClick={() => setOpen(!open)}
