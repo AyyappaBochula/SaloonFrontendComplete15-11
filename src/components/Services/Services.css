@@ -1,0 +1,1502 @@
+
+:root {
+  --gold: #e9b64f;
+  --gold-light: #ffd77f;
+  --bg: #0c0a07;
+  --card: #17130d;
+  --border: rgba(224, 169, 66, 0.38);
+  --text: #fff8ed;
+  --muted: #b8ad9e;
+}
+
+.services-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+}
+
+/* HERO */
+
+.services-hero {
+  min-height: 212px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 35px 3.5%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.services-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #080705 0%, rgba(8,7,5,.93) 35%, rgba(8,7,5,.15) 100%),
+    url("https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=90")
+    center 43% / cover no-repeat;
+}
+
+.services-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.service-eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.services-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(42px, 4vw, 60px);
+  line-height: 1;
+  font-weight: 600;
+  margin: 15px 0 8px;
+}
+
+.services-hero h1 span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.services-hero h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.services-hero p {
+  color: #e4d7c3;
+  font-size: 13px;
+  margin: 0;
+}
+
+.services-hero-decoration {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 16px;
+  width: 230px;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 24px;
+}
+
+.services-hero-decoration span {
+  width: 90px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* MAIN LAYOUT */
+
+.services-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 342px;
+  gap: 26px;
+  padding: 24px 2%;
+  align-items: start;
+}
+
+.services-main {
+  min-width: 0;
+}
+
+.service-category {
+  margin-bottom: 28px;
+}
+
+.category-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 13px;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.category-icon {
+  color: var(--gold);
+  font-size: 29px;
+}
+
+.category-title h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 0;
+}
+
+.category-line {
+  flex: 1;
+  min-width: 20px;
+  height: 1px;
+  background: var(--border);
+}
+
+.category-heading > p {
+  color: #e1d8ca;
+  font-size: 11px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* SERVICE GRID */
+
+.category-service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.service-card {
+  min-width: 0;
+  min-height: 125px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  background: linear-gradient(145deg, #19150f, #0f0d09);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color .25s, transform .25s, background .25s;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  background: #211a10;
+}
+
+.service-card.service-selected {
+  border-color: var(--gold);
+  background: rgba(211, 161, 62, .09);
+}
+
+.service-card-image {
+  width: 45%;
+  min-width: 0;
+  height: 110px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9px;
+  flex-shrink: 0;
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+
+.service-card:hover .service-card-image img {
+  transform: scale(1.06);
+}
+
+.service-selected-tag {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: var(--gold);
+  color: #120e07;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.service-card-info {
+  min-width: 0;
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px 3px;
+}
+
+.service-card-info h3 {
+  color: #fff9ee;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 7px;
+  overflow-wrap: anywhere;
+}
+
+.service-duration {
+  color: #e5ded3;
+  font-size: 10px;
+}
+
+.service-duration span {
+  font-size: 14px;
+}
+
+.service-price {
+  color: var(--gold);
+  font-size: 19px;
+  margin-top: 6px;
+}
+
+.service-add-btn {
+  align-self: flex-end;
+  min-width: 80px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 30px;
+  padding: 5px 12px;
+  background: linear-gradient(110deg, #f9d06c, #e7a93e);
+  color: #171006;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.service-add-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px);
+}
+
+.service-add-btn.added {
+  background: #302513;
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+}
+
+/* SELECTED SERVICES SIDEBAR */
+
+.services-sidebar {
+  position: sticky;
+  top: 95px;
+  align-self: start;
+}
+
+.selected-services-panel {
+  padding: 15px;
+  border: 1px solid var(--gold);
+  border-radius: 13px;
+  background: linear-gradient(145deg, #17130d, #0c0a07);
+  box-shadow: 0 10px 35px rgba(0,0,0,.22);
+}
+
+.selected-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border);
+}
+
+.selected-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.selected-crown {
+  font-size: 30px;
+  color: var(--gold);
+}
+
+.selected-panel-title h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  color: var(--gold-light);
+  margin: 0;
+}
+
+.selected-count {
+  background: linear-gradient(120deg, #f8ce6b, #e7a93e);
+  color: #160f04;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 7px 11px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.empty-selection {
+  padding: 30px 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.empty-icon {
+  font-size: 35px;
+  color: var(--gold);
+}
+
+.empty-selection h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 23px;
+  margin: 10px 0;
+}
+
+.empty-selection p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.empty-selection > span {
+  display: block;
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  margin-top: 20px;
+}
+
+.selected-list {
+  max-height: 310px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) #211b11;
+}
+
+.selected-service-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.selected-service-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.selected-service-details {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selected-service-details h3 {
+  font-size: 12px;
+  margin: 0;
+}
+
+.selected-service-details span {
+  color: #ded4c5;
+  font-size: 10px;
+}
+
+.selected-service-details strong {
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.remove-service-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid var(--gold);
+  background: transparent;
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.remove-service-btn:hover {
+  color: #100d08;
+  background: var(--gold);
+}
+
+/* TOTALS */
+
+.selection-calculations {
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--border);
+}
+
+.calculation-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.calculation-row span {
+  color: #e6ded1;
+}
+
+.calculation-row strong {
+  color: var(--gold-light);
+  text-align: right;
+}
+
+.payment-summary {
+  padding: 13px;
+  margin-top: 10px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: rgba(222,169,68,.08);
+}
+
+.payment-advance,
+.payment-remaining {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 7px 0;
+  font-size: 11px;
+}
+
+.payment-advance span {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.payment-advance strong {
+  color: var(--gold);
+  font-size: 21px;
+}
+
+.payment-remaining strong {
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.continue-booking-btn {
+  width: 100%;
+  min-height: 43px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(110deg, #f8ce6b, #e5a039);
+  color: #171006;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 12px;
+  cursor: pointer;
+  transition: filter .2s;
+}
+
+.continue-booking-btn:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+
+.continue-booking-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.continue-booking-btn span {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.secure-payment-note {
+  text-align: center;
+  color: var(--gold);
+  font-size: 9px;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+
+.services-footer {
+  border-top: 1px solid var(--border);
+  background: #080705;
+  padding: 35px 5% 0;
+}
+
+.services-footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.3fr 1.2fr;
+  gap: 25px;
+  padding-bottom: 28px;
+}
+
+.services-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.services-footer-logo > span {
+  font-size: 42px;
+  color: var(--gold);
+}
+
+.services-footer-logo > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-footer-logo strong {
+  color: var(--gold);
+  font: 600 27px "Cormorant Garamond", serif;
+}
+
+.services-footer-logo small {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.services-footer-brand > p {
+  color: var(--gold-light);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 9px;
+}
+
+.footer-socials a {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+.services-footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.services-footer-column h3 {
+  color: var(--gold);
+  font: 600 22px "Cormorant Garamond", serif;
+  margin: 0 0 5px;
+}
+
+.services-footer-column a,
+.services-footer-column p {
+  color: #d4cabe;
+  font-size: 10px;
+  margin: 0;
+}
+
+.services-footer-column a:hover {
+  color: var(--gold);
+}
+
+.services-footer-bottom {
+  min-height: 45px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #b5a999;
+  font-size: 9px;
+}
+
+.services-footer-bottom > div {
+  display: flex;
+  gap: 20px;
+}
+
+.services-footer-bottom a {
+  color: inherit;
+}
+
+/* MOBILE BOOKING BAR */
+
+.mobile-booking-bar {
+  display: none;
+}
+
+/* MOBILE DRAWER */
+
+.mobile-drawer-overlay {
+  display: none;
+}
+
+/* TABLET */
+
+@media (max-width: 1150px) {
+  .services-layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 16px;
+    padding: 20px 2%;
+  }
+
+  .category-service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-card-image {
+    width: 43%;
+  }
+
+  .services-footer-main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* MOBILE FIRST EXPERIENCE */
+
+@media (max-width: 700px) {
+  .services-hero {
+    min-height: 230px;
+    padding: 30px 20px;
+    align-items: flex-end;
+  }
+
+  .services-hero-bg {
+    background:
+      linear-gradient(90deg, rgba(8,7,5,.94), rgba(8,7,5,.63)),
+      url("https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1000&q=85")
+      58% center / cover no-repeat;
+  }
+
+  .services-hero h1 {
+    font-size: clamp(39px, 10vw, 52px);
+    line-height: 1.02;
+    margin: 12px 0;
+  }
+
+  .services-hero h2 {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .services-hero p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .service-eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.8px;
+  }
+
+  .services-hero-decoration {
+    margin-top: 10px;
+    font-size: 19px;
+  }
+
+  .services-layout {
+    display: block;
+    padding: 25px 14px 105px;
+  }
+
+  .services-sidebar {
+    display: none;
+  }
+
+  .service-category {
+    margin-bottom: 31px;
+  }
+
+  .category-heading {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    margin-bottom: 13px;
+  }
+
+  .category-title {
+    gap: 8px;
+  }
+
+  .category-icon {
+    font-size: 24px;
+  }
+
+  .category-title h2 {
+    font-size: 26px;
+  }
+
+  .category-line {
+    display: none;
+  }
+
+  .category-heading > p {
+    width: 100%;
+    padding-left: 33px;
+    color: var(--muted);
+    font-size: 10px;
+  }
+
+  .category-service-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .service-card {
+    min-height: 118px;
+    padding: 7px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  .service-card-image {
+    width: 37%;
+    height: 108px;
+    border-radius: 8px;
+  }
+
+  .service-card-info {
+    padding: 5px 5px 5px 0;
+    min-height: 104px;
+  }
+
+  .service-card-info h3 {
+    font-size: 14px;
+    line-height: 1.35;
+    margin-bottom: 5px;
+  }
+
+  .service-duration {
+    font-size: 11px;
+  }
+
+  .service-price {
+    font-size: 21px;
+    margin-top: 6px;
+  }
+
+  .service-add-btn {
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    min-width: 88px;
+    min-height: 34px;
+    font-size: 11px;
+  }
+
+  /* Fixed mobile selection bar */
+
+  .mobile-booking-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    padding: 10px 13px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(9,8,6,.96);
+    border-top: 1px solid var(--gold);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-selection-button {
+    width: 100%;
+    min-height: 58px;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    background: linear-gradient(110deg, #20190d, #171109);
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 7px 12px;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .mobile-cart-count {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--gold);
+    color: #140e04;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .mobile-booking-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 4px;
+  }
+
+  .mobile-booking-text strong {
+    font-size: 12px;
+  }
+
+  .mobile-booking-text small {
+    color: var(--muted);
+    font-size: 9px;
+  }
+
+  .mobile-booking-price {
+    color: var(--gold);
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .mobile-booking-arrow {
+    color: var(--gold);
+    font-size: 20px;
+    padding-left: 5px;
+  }
+
+  /* Drawer */
+
+  .mobile-drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+  }
+
+  .mobile-drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    backdrop-filter: blur(3px);
+  }
+
+  .mobile-drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 88dvh;
+    overflow-y: auto;
+    padding: 10px 17px calc(20px + env(safe-area-inset-bottom));
+    border-radius: 22px 22px 0 0;
+    border: 1px solid var(--gold);
+    background: #100d08;
+    box-shadow: 0 -15px 50px #0008;
+    animation: drawerUp .3s ease-out;
+  }
+
+  @keyframes drawerUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .mobile-drawer-handle {
+    width: 42px;
+    height: 4px;
+    background: #766447;
+    border-radius: 10px;
+    margin: 0 auto 17px;
+  }
+
+  .mobile-drawer-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .mobile-drawer-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+    color: var(--gold-light);
+    font-size: 29px;
+    margin: 4px 0 0;
+  }
+
+  .drawer-close {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--gold);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .mobile-drawer .selected-services-panel {
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .mobile-drawer .selected-panel-heading {
+    display: none;
+  }
+
+  .mobile-drawer .selected-list {
+    max-height: 30vh;
+  }
+
+  .mobile-drawer .selected-service-item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .mobile-drawer .selected-service-details h3 {
+    font-size: 13px;
+  }
+
+  .mobile-drawer .selection-calculations {
+    padding: 10px 0;
+  }
+
+  .mobile-drawer .calculation-row {
+    font-size: 12px;
+  }
+
+  .mobile-drawer .payment-summary {
+    padding: 12px;
+  }
+
+  .mobile-drawer .continue-booking-btn {
+    min-height: 49px;
+    font-size: 13px;
+  }
+
+  /* Footer */
+
+  .services-footer {
+    padding: 35px 18px 0;
+  }
+
+  .services-footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+
+  .services-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .services-footer-logo strong {
+    font-size: 26px;
+  }
+
+  .services-footer-column h3 {
+    font-size: 21px;
+  }
+
+  .services-footer-column a,
+  .services-footer-column p {
+    font-size: 10px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .services-footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 15px 0;
+    line-height: 1.7;
+    font-size: 9px;
+  }
+
+  .services-footer-bottom > div {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .category-title h2 {
+    font-size: 23px;
+  }
+
+  .service-card-info h3 {
+    font-size: 12px;
+  }
+
+  .service-card-image {
+    width: 34%;
+  }
+
+  .service-add-btn {
+    min-width: 75px;
+  }
+
+  .mobile-booking-text strong {
+    font-size: 10px;
+  }
+
+  .mobile-booking-price {
+    font-size: 15px;
+  }
+}
+
+/* SERVICES NAVBAR */
+
+.services-navbar {
+  height: 72px;
+  padding: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: rgba(10, 8, 5, .97);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(15px);
+}
+
+.services-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.services-brand-crown {
+  color: var(--gold);
+  font-size: 39px;
+}
+
+.services-brand > span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.services-brand strong {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--gold);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.services-brand small {
+  color: #e0d3bd;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.services-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.services-nav-links a {
+  color: #eee5d8;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 26px 0 23px;
+  border-bottom: 2px solid transparent;
+  transition: .2s;
+}
+
+.services-nav-links a:hover,
+.services-nav-links a.active {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.services-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.services-back-btn,
+.services-booked-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.services-back-btn {
+  border: 1px solid #eee0c6;
+  color: white;
+}
+
+.services-booked-btn {
+  background: linear-gradient(110deg, #f8d078, #e6a63c);
+  color: #171006;
+}
+
+.services-back-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.services-booked-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* MOBILE NAVBAR */
+
+@media(max-width: 900px) {
+  .services-navbar {
+    height: 66px;
+    padding: 0 15px;
+  }
+
+  .services-brand-crown {
+    font-size: 32px;
+  }
+
+  .services-brand strong {
+    font-size: 23px;
+  }
+
+  .services-nav-links {
+    display: none;
+  }
+
+  .services-nav-actions {
+    gap: 7px;
+  }
+
+  .services-back-btn {
+    padding: 9px 11px;
+    font-size: 10px;
+  }
+
+  .services-booked-btn {
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+}
+
+@media(max-width: 390px) {
+  .services-back-btn span {
+    display: none;
+  }
+
+  .services-back-btn {
+    width: 37px;
+    height: 37px;
+    padding: 0;
+  }
+
+  .services-booked-btn {
+    font-size: 8px;
+    padding: 9px;
+  }
+}
+
+/* =================================
+   GOLDEN TOUCH SERVICES NAVBAR
+================================= */
+
+.gt-services-header {
+  width: 100%;
+  height: 72px;
+  padding: 0 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(9, 8, 6, 0.96);
+  border-bottom: 1px solid rgba(218, 169, 75, 0.4);
+  backdrop-filter: blur(18px);
+}
+
+/* LOGO */
+
+.gt-services-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+}
+
+.gt-services-logo-mark {
+  font-size: 43px;
+  color: #e9b64f;
+  line-height: 1;
+  transition: transform .3s ease;
+}
+
+.gt-services-logo:hover .gt-services-logo-mark {
+  transform: rotate(-12deg);
+}
+
+.gt-services-logo-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.gt-services-logo-copy strong {
+  color: #e9b64f;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.gt-services-logo-copy small {
+  color: #e7ddca;
+  font-family: "Manrope", sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* ACTION BUTTONS */
+
+.gt-services-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.gt-back-home,
+.gt-services-booked {
+  min-height: 42px;
+  padding: 0 19px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 30px;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+/* BACK TO HOME */
+
+.gt-back-home {
+  color: #fffaf0;
+  background: transparent;
+  border: 1px solid rgba(245, 225, 190, .75);
+}
+
+.gt-back-home:hover {
+  color: #f2c15e;
+  border-color: #e9b64f;
+  background: rgba(233, 182, 79, .07);
+}
+
+.back-arrow {
+  font-size: 18px;
+  transition: transform .25s ease;
+}
+
+.gt-back-home:hover .back-arrow {
+  transform: translateX(-4px);
+}
+
+/* SERVICES BOOKED */
+
+.gt-services-booked {
+  color: #171006;
+  border: 1px solid #efbd59;
+  background: linear-gradient(110deg, #f8d078, #e6a63c);
+  box-shadow: 0 3px 12px rgba(222, 169, 68, .12);
+}
+
+.gt-services-booked:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(222, 169, 68, .25);
+}
+
+.booked-icon {
+  font-size: 15px;
+}
+
+.booked-count {
+  font-weight: 800;
+}
+
+/* TABLET */
+
+@media (max-width: 700px) {
+  .gt-services-header {
+    height: 66px;
+    padding: 0 15px;
+  }
+
+  .gt-services-logo {
+    gap: 7px;
+  }
+
+  .gt-services-logo-mark {
+    font-size: 34px;
+  }
+
+  .gt-services-logo-copy strong {
+    font-size: 23px;
+  }
+
+  .gt-services-actions {
+    gap: 7px;
+  }
+
+  .gt-back-home,
+  .gt-services-booked {
+    min-height: 38px;
+    padding: 0 11px;
+    gap: 6px;
+    font-size: 10px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 390px) {
+  .gt-services-header {
+    padding: 0 10px;
+  }
+
+  /* Responsive refinements shared by service selection and booking navigation */
+  .gt-services-header {
+    height: 80px;
+    padding-inline: clamp(16px, 4vw, 56px);
+  }
+
+  .gt-services-logo-copy strong {
+    color: #ead4ad;
+    font-weight: 600;
+  }
+
+  .gt-services-logo-mark {
+    color: #c7a66e;
+  }
+
+  .gt-back-home,
+  .gt-services-booked {
+    min-height: 44px;
+    border-radius: 2px;
+  }
+
+  .gt-back-home {
+    border-color: rgba(199, 166, 110, .45);
+  }
+
+  .gt-services-booked {
+    border-color: #c7a66e;
+    background: #c7a66e;
+    box-shadow: none;
+  }
+
+  @media (max-width: 900px) {
+    .services-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      padding: 24px clamp(20px, 4vw, 48px);
+    }
+
+    .services-sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .gt-services-header {
+      height: 76px;
+      padding-inline: 16px;
+    }
+
+    .services-hero {
+      min-height: 250px;
+    }
+
+    .services-layout {
+      padding-inline: 16px;
+    }
+
+    .gt-back-home,
+    .gt-services-booked {
+      min-height: 42px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .gt-services-header {
+      padding-inline: 12px;
+    }
+
+    .gt-services-logo-mark {
+      font-size: 30px;
+    }
+
+    .gt-services-logo-copy strong {
+      font-size: 20px;
+    }
+
+    .gt-services-logo-copy small {
+      font-size: 6px;
+      letter-spacing: 1.5px;
+    }
+
+    .gt-back-home,
+    .gt-services-booked {
+      min-height: 40px;
+      padding-inline: 8px;
+      font-size: 9px;
+    }
+
+    .service-card {
+      gap: 9px;
+    }
+
+    .selected-service-item img {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .gt-services-logo-mark {
+    font-size: 29px;
+  }
+
+  .gt-services-logo-copy strong {
+    font-size: 20px;
+  }
+
+  .gt-services-logo-copy small {
+    font-size: 6px;
+    letter-spacing: 1.5px;
+  }
+
+  .gt-services-actions {
+    gap: 5px;
+  }
+
+  .gt-back-home,
+  .gt-services-booked {
+    min-height: 36px;
+    padding: 0 8px;
+    font-size: 9px;
+  }
+
+  .gt-back-home {
+    gap: 4px;
+  }
+
+  .gt-services-booked {
+    gap: 4px;
+  }
+}
