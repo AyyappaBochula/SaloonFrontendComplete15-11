@@ -1190,3 +1190,769 @@
     font-size: 8px;
   }
 }
+
+/* ==================================
+   BOOKING CONFIRMATION
+================================== */
+
+.gt-booking-confirmation {
+  min-height: 100vh;
+  width: 100%;
+  padding: 55px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at top, rgba(198, 166, 107, 0.10), transparent 55%),
+    #090909;
+  color: #f5f1e9;
+  box-sizing: border-box;
+}
+
+.gt-confirmation-card {
+  width: 100%;
+  max-width: 690px;
+  padding: 48px;
+  border: 1px solid rgba(198, 166, 107, 0.25);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #151412, #0e0e0d);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.gt-confirmation-success {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 25px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #c6a66b;
+  border-radius: 50%;
+  color: #c6a66b;
+  font-size: 30px;
+}
+
+.gt-booking-kicker {
+  color: #c6a66b;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.gt-confirmation-card h1 {
+  margin: 18px 0 12px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(34px, 5vw, 48px);
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.gt-confirmation-card h1 em {
+  color: #c6a66b;
+}
+
+.gt-confirmation-description {
+  color: #aaa49a;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* OTP */
+
+.gt-confirmation-otp {
+  padding: 25px;
+  margin: 25px 0;
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  border-radius: 14px;
+  background: rgba(198, 166, 107, 0.06);
+}
+
+.gt-otp-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.gt-otp-label {
+  color: #c6a66b;
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.gt-otp-heading h2 {
+  margin: 7px 0 0;
+  color: #eee8dc;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.gt-otp-lock {
+  color: #c6a66b;
+  font-size: 24px;
+}
+
+.gt-otp-digits {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0 18px;
+}
+
+.gt-otp-digit {
+  width: 52px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  border-radius: 9px;
+  background: #090909;
+  color: #d5b77d;
+  font-size: 26px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.gt-confirmation-otp > p {
+  margin: 0;
+  color: #aaa49a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* DETAILS */
+
+.gt-confirmation-details {
+  margin-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.gt-confirmation-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 17px 3px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gt-confirmation-detail span {
+  color: #99938a;
+  font-size: 13px;
+}
+
+.gt-confirmation-detail strong {
+  color: #f0ece4;
+  font-size: 13px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.gt-confirmation-detail .gt-gold-text {
+  color: #c6a66b;
+}
+
+/* NOTE */
+
+.gt-confirmation-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 25px 0;
+  padding: 14px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.035);
+  text-align: left;
+}
+
+.gt-confirmation-note > span {
+  color: #c6a66b;
+}
+
+.gt-confirmation-note p {
+  margin: 0;
+  color: #aaa49a;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.gt-confirmation-home {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.gt-confirmation-footer {
+  margin: 25px 0 0;
+  color: #777168;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .gt-booking-confirmation {
+    min-height: 100svh;
+    padding: 22px 12px;
+    align-items: flex-start;
+  }
+
+  .gt-confirmation-card {
+    padding: 28px 18px;
+    border-radius: 15px;
+  }
+
+  .gt-confirmation-success {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 20px;
+    font-size: 25px;
+  }
+
+  .gt-booking-kicker {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .gt-confirmation-card h1 {
+    font-size: 35px;
+  }
+
+  .gt-confirmation-description {
+    font-size: 13px;
+  }
+
+  .gt-confirmation-otp {
+    padding: 19px 12px;
+    margin: 22px 0;
+  }
+
+  .gt-otp-digit {
+    width: 42px;
+    height: 52px;
+    font-size: 22px;
+  }
+
+  .gt-otp-digits {
+    gap: 7px;
+  }
+
+  .gt-confirmation-detail {
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .gt-confirmation-detail span,
+  .gt-confirmation-detail strong {
+    font-size: 11px;
+  }
+
+  .gt-confirmation-note {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .gt-confirmation-card {
+    padding: 25px 13px;
+  }
+
+  .gt-otp-digit {
+    width: 37px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .gt-confirmation-detail span,
+  .gt-confirmation-detail strong {
+    font-size: 10px;
+  }
+}
+
+/* CLEAN BOOKING DETAILS TABLE */
+
+.gt-confirmation-details {
+  width: 100%;
+  margin: 28px 0;
+  border: 1px solid rgba(198, 166, 107, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #11110f;
+  text-align: left;
+}
+
+.gt-confirmation-table-header,
+.gt-confirmation-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 20px;
+}
+
+.gt-confirmation-table-header {
+  background: rgba(198, 166, 107, 0.14);
+  border-bottom: 1px solid rgba(198, 166, 107, 0.35);
+}
+
+.gt-confirmation-table-header span {
+  color: #c6a66b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.gt-confirmation-table-header span:last-child {
+  text-align: right;
+}
+
+.gt-confirmation-detail {
+  min-height: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.gt-confirmation-detail:last-child {
+  border-bottom: none;
+}
+
+.gt-confirmation-detail > span {
+  color: #b5afa4;
+  font-size: 13px;
+}
+
+.gt-confirmation-detail > strong {
+  color: #f3eee5;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.gt-confirmation-detail > strong.gt-gold-text {
+  color: #d4b578;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .gt-confirmation-details {
+    margin: 22px 0;
+  }
+
+  .gt-confirmation-table-header,
+  .gt-confirmation-detail {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 10px;
+    padding: 15px 12px;
+  }
+
+  .gt-confirmation-table-header span {
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+
+  .gt-confirmation-detail > span,
+  .gt-confirmation-detail > strong {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 360px) {
+  .gt-confirmation-table-header,
+  .gt-confirmation-detail {
+    grid-template-columns: 0.85fr 1.15fr;
+    padding: 13px 9px;
+    gap: 7px;
+  }
+
+  .gt-confirmation-detail > span,
+  .gt-confirmation-detail > strong {
+    font-size: 10px;
+  }
+}
+
+/* =====================================
+   PAYMENT STEP - PREMIUM UI
+===================================== */
+
+.gt-payment-panel {
+  width: 100%;
+}
+
+/* APPOINTMENT */
+
+.gt-payment-appointment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 19px 21px;
+  margin: 25px 0 16px;
+  border: 1px solid rgba(198, 166, 107, 0.25);
+  border-radius: 10px;
+  background: rgba(198, 166, 107, 0.055);
+}
+
+.gt-payment-appointment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.gt-payment-small-label {
+  color: #c6a66b;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.gt-payment-appointment-info strong {
+  color: #f1ede5;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gt-payment-appointment-info small {
+  color: #a9a398;
+  font-size: 12px;
+}
+
+.gt-appointment-symbol {
+  color: #c6a66b;
+  font-size: 27px;
+}
+
+/* TOTAL CARD */
+
+.gt-payment-total-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 19px 21px;
+  margin-bottom: 25px;
+  border-radius: 9px;
+  background: #171613;
+}
+
+.gt-payment-total-card span {
+  color: #aaa49a;
+  font-size: 13px;
+}
+
+.gt-payment-total-card strong {
+  color: #d5b77d;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+/* PAYMENT SELECTION */
+
+.gt-payment-selection {
+  padding: 23px;
+  border: 1px solid rgba(198, 166, 107, 0.27);
+  border-radius: 12px;
+  background: #11110f;
+}
+
+.gt-payment-selection-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.gt-payment-selection-heading h3 {
+  margin: 8px 0 0;
+  color: #eee9df;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.gt-payment-percentage {
+  min-width: 60px;
+  padding: 9px 12px;
+  border: 1px solid rgba(198, 166, 107, 0.4);
+  border-radius: 7px;
+  color: #d5b77d;
+  background: rgba(198, 166, 107, 0.08);
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* SLIDER */
+
+.gt-payment-slider-container {
+  margin: 28px 0 22px;
+}
+
+.gt-payment-slider {
+  width: 100%;
+  height: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    #c6a66b 0%,
+    #c6a66b var(--payment-progress),
+    #393630 var(--payment-progress),
+    #393630 100%
+  );
+}
+
+.gt-payment-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #c6a66b;
+  border-radius: 50%;
+  background: #11110f;
+  box-shadow: 0 0 0 4px rgba(198, 166, 107, 0.13);
+}
+
+.gt-payment-slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border: 3px solid #c6a66b;
+  border-radius: 50%;
+  background: #11110f;
+  box-shadow: 0 0 0 4px rgba(198, 166, 107, 0.13);
+}
+
+.gt-payment-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 13px;
+}
+
+.gt-payment-slider-labels span {
+  color: #969087;
+  font-size: 10px;
+}
+
+/* QUICK OPTIONS */
+
+.gt-payment-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.gt-payment-option {
+  min-height: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid #393630;
+  border-radius: 7px;
+  background: #181714;
+  color: #c5beb1;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.gt-payment-option:hover,
+.gt-payment-option.active {
+  border-color: #c6a66b;
+  background: rgba(198, 166, 107, 0.12);
+  color: #d5b77d;
+}
+
+.gt-payment-option small {
+  font-size: 8px;
+  font-weight: 500;
+}
+
+/* PAY NOW */
+
+.gt-payment-amount-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 17px;
+  border-radius: 8px;
+  background: rgba(198, 166, 107, 0.09);
+}
+
+.gt-payment-amount-card div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.gt-payment-amount-card div span {
+  color: #eee8dc;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gt-payment-amount-card div small {
+  color: #aaa49a;
+  font-size: 10px;
+}
+
+.gt-payment-amount-card > strong {
+  color: #d5b77d;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* REMAINING */
+
+.gt-payment-remaining {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 2px 3px;
+}
+
+.gt-payment-remaining span {
+  color: #aaa49a;
+  font-size: 12px;
+}
+
+.gt-payment-remaining strong {
+  color: #eee9df;
+  font-size: 14px;
+}
+
+.gt-payment-remaining .gt-payment-completed {
+  color: #c6a66b;
+}
+
+.gt-payment-full-message {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid rgba(198, 166, 107, 0.3);
+  border-radius: 7px;
+  background: rgba(198, 166, 107, 0.07);
+  color: #d5b77d;
+  font-size: 12px;
+}
+
+.gt-payment-full-message span {
+  margin-right: 8px;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .gt-payment-appointment {
+    padding: 16px;
+  }
+
+  .gt-payment-total-card {
+    padding: 16px;
+  }
+
+  .gt-payment-total-card strong {
+    font-size: 19px;
+  }
+
+  .gt-payment-selection {
+    padding: 17px 14px;
+  }
+
+  .gt-payment-selection-heading h3 {
+    font-size: 13px;
+  }
+
+  .gt-payment-percentage {
+    min-width: 52px;
+    padding: 8px;
+    font-size: 17px;
+  }
+
+  .gt-payment-options {
+    gap: 7px;
+  }
+
+  .gt-payment-option {
+    min-height: 43px;
+    font-size: 12px;
+  }
+
+  .gt-payment-amount-card {
+    padding: 14px 12px;
+  }
+
+  .gt-payment-amount-card > strong {
+    font-size: 18px;
+  }
+
+  .gt-payment-remaining span,
+  .gt-payment-remaining strong {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .gt-payment-selection {
+    padding: 15px 11px;
+  }
+
+  .gt-payment-options {
+    gap: 5px;
+  }
+
+  .gt-payment-option {
+    font-size: 11px;
+  }
+
+  .gt-payment-amount-card > strong {
+    font-size: 16px;
+  }
+}
+
+/* PAYMENT STATUS */
+
+.gt-partial-payment-status {
+  color: #d5b77d !important;
+}
+
+.gt-confirmation-detail strong {
+  overflow-wrap: anywhere;
+}
+
+/* Ensure table handles the additional payment rows */
+
+.gt-confirmation-details {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .gt-confirmation-table-header,
+  .gt-confirmation-detail {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .gt-confirmation-detail {
+    min-height: 48px;
+  }
+}
