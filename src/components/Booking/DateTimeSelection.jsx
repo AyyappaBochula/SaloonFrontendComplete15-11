@@ -4,10 +4,10 @@ import { getDuration } from "./Booking";
 
 const OPENING_MINUTES = 10 * 60;
 const CLOSING_MINUTES = 19 * 60;
-const SLOT_INTERVAL = 30;
+const SLOT_INTERVAL = 60; // 1-hour difference
 
-// Demo unavailable slots. Replace with real backend availability later.
-const unavailableSlots = ["11:00", "14:30", "17:00"];
+// Demo unavailable slots
+const unavailableSlots = ["11:00", "14:00", "17:00"];
 
 const dateValue = (date) => {
   const year = date.getFullYear();
@@ -19,6 +19,7 @@ const dateValue = (date) => {
 
 const formatTime = (value) => {
   const [hour, minute] = value.split(":").map(Number);
+
   return `${hour % 12 || 12}:${String(minute).padStart(2, "0")} ${
     hour >= 12 ? "PM" : "AM"
   }`;
@@ -38,9 +39,15 @@ export default function DateTimeSelection({
       sum + getDuration(service.time || service.duration),
     0
   );
-  const durationLabel = totalDuration >= 60
-    ? `${Math.floor(totalDuration / 60)} hr${totalDuration % 60 ? ` ${totalDuration % 60} min` : ""}`
-    : `${totalDuration} min`;
+
+  const durationLabel =
+    totalDuration >= 60
+      ? `${Math.floor(totalDuration / 60)} hr${
+          totalDuration % 60
+            ? ` ${totalDuration % 60} min`
+            : ""
+        }`
+      : `${totalDuration} min`;
 
   const dates = useMemo(() => {
     return Array.from({ length: 14 }, (_, index) => {
@@ -54,6 +61,10 @@ export default function DateTimeSelection({
   const slots = useMemo(() => {
     const result = [];
 
+    const now = new Date();
+    const today = dateValue(now);
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
     for (
       let minutes = OPENING_MINUTES;
       minutes + totalDuration <= CLOSING_MINUTES;
@@ -66,15 +77,19 @@ export default function DateTimeSelection({
         `${String(hour).padStart(2, "0")}:` +
         `${String(minute).padStart(2, "0")}`;
 
+      const isPast =
+        selectedDate === today && minutes <= currentMinutes;
+
       result.push({
         value,
         label: formatTime(value),
-        unavailable: unavailableSlots.includes(value),
+        unavailable:
+          unavailableSlots.includes(value) || isPast,
       });
     }
 
     return result;
-  }, [totalDuration]);
+  }, [totalDuration, selectedDate]);
 
   const handleDateSelect = (date) => {
     setSelectedDate(dateValue(date));
@@ -82,8 +97,9 @@ export default function DateTimeSelection({
   };
 
   return (
-    <div className="gt-booking-panel">
+    <div className="gt-booking-panel gt-date-clean">
 
+      {/* Heading */}
       <div className="gt-booking-panel-heading">
         <span className="gt-booking-kicker">
           STEP 02 / YOUR APPOINTMENT
@@ -94,35 +110,41 @@ export default function DateTimeSelection({
         </h2>
 
         <p>
-          Select a date and a time that works best for you.
+          Pick a convenient date and appointment time.
         </p>
       </div>
 
-      <div className="gt-selection-section">
+      {/* Date selection */}
+      <section className="gt-date-section">
 
-        <div className="gt-selection-title">
+        <div className="gt-date-section-heading">
           <div>
-            <span className="gt-section-number">01</span>
-            <h3>Select a date</h3>
+            <span className="gt-date-step">01</span>
+            <div>
+              <h3>Choose a date</h3>
+              <p>Select your preferred day</p>
+            </div>
           </div>
 
-          <span className="gt-selection-hint">Next 14 days</span>
+          <span className="gt-date-range">NEXT 14 DAYS</span>
         </div>
 
         <div className="gt-date-list">
           {dates.map((date) => {
             const value = dateValue(date);
+            const active = selectedDate === value;
 
             return (
               <button
                 type="button"
                 key={value}
-                className={`gt-date-option ${
-                  selectedDate === value ? "active" : ""
+                className={`gt-date-option-clean ${
+                  active ? "active" : ""
                 }`}
                 onClick={() => handleDateSelect(date)}
+                aria-pressed={active}
               >
-                <span>
+                <span className="gt-date-weekday">
                   {date.toLocaleDateString("en-IN", {
                     weekday: "short",
                   })}
@@ -130,70 +152,132 @@ export default function DateTimeSelection({
 
                 <strong>{date.getDate()}</strong>
 
-                <small>
+                <span className="gt-date-month">
                   {date.toLocaleDateString("en-IN", {
                     month: "short",
                   })}
-                </small>
+                </span>
+
+                {active && (
+                  <span className="gt-date-selected-mark">✓</span>
+                )}
               </button>
             );
           })}
         </div>
+      </section>
 
-      </div>
+      {/* Time selection */}
+      <section className="gt-date-section">
 
-      <div className="gt-selection-section">
-
-        <div className="gt-selection-title">
+        <div className="gt-date-section-heading">
           <div>
-            <span className="gt-section-number">02</span>
-            <h3>Available time slots</h3>
+            <span className="gt-date-step">02</span>
+            <div>
+              <h3>Choose a time</h3>
+              <p>Appointments available every hour</p>
+            </div>
           </div>
 
-          <span className="gt-selection-hint">
-            30-minute intervals
-          </span>
+          <span className="gt-date-range">10 AM – 7 PM</span>
         </div>
 
-        <div className="gt-appointment-duration">
-          <span>Estimated appointment duration</span>
-          <strong>{durationLabel}</strong>
+        {/* Duration */}
+        <div className="gt-duration-card">
+          <div className="gt-duration-icon">◷</div>
+
+          <div>
+            <span>YOUR APPOINTMENT DURATION</span>
+            <strong>{durationLabel}</strong>
+          </div>
         </div>
 
         {!selectedDate ? (
-          <p className="gt-slot-message">
-            Please select a date first.
-          </p>
+          <div className="gt-date-empty">
+            <span>▦</span>
+            <strong>Select a date first</strong>
+            <p>Available appointment times will appear here.</p>
+          </div>
+        ) : slots.length === 0 ? (
+          <div className="gt-date-empty">
+            <span>◷</span>
+            <strong>No available times</strong>
+            <p>Please choose another date.</p>
+          </div>
         ) : (
           <>
-            <div className="gt-time-grid">
-              {slots.map((slot) => (
-                <button
-                  type="button"
-                  key={slot.value}
-                  disabled={slot.unavailable}
-                  className={`gt-time-option ${
-                    selectedTime === slot.value ? "active" : ""
-                  }`}
-                  onClick={() => setSelectedTime(slot.value)}
-                >
-                  {slot.label}
-                </button>
-              ))}
+            <div className="gt-time-grid-clean">
+              {slots.map((slot) => {
+                const active = selectedTime === slot.value;
+
+                return (
+                  <button
+                    type="button"
+                    key={slot.value}
+                    disabled={slot.unavailable}
+                    aria-pressed={active}
+                    className={`gt-time-option-clean ${
+                      active ? "active" : ""
+                    } ${
+                      slot.unavailable ? "unavailable" : ""
+                    }`}
+                    onClick={() => setSelectedTime(slot.value)}
+                  >
+                    <span>{slot.label}</span>
+
+                    {active && (
+                      <small>SELECTED</small>
+                    )}
+
+                    {slot.unavailable && (
+                      <small>UNAVAILABLE</small>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="gt-slot-legend">
-              <span><i className="available-dot" /> Available</span>
-              <span><i className="selected-dot" /> Selected</span>
-              <span><i className="unavailable-dot" /> Unavailable</span>
+            <div className="gt-time-legend-clean">
+              <span>
+                <i className="gt-legend-available" />
+                Available
+              </span>
+
+              <span>
+                <i className="gt-legend-selected" />
+                Selected
+              </span>
+
+              <span>
+                <i className="gt-legend-unavailable" />
+                Unavailable
+              </span>
             </div>
           </>
         )}
+      </section>
 
-      </div>
+      {/* Selected appointment summary */}
+      {selectedDate && selectedTime && (
+        <div className="gt-selected-appointment">
+          <span>YOUR SELECTION</span>
 
-      <div className="gt-booking-action gt-booking-action-split">
+          <strong>
+            {new Date(
+              `${selectedDate}T00:00:00`
+            ).toLocaleDateString("en-IN", {
+              weekday: "short",
+              day: "numeric",
+              month: "long",
+            })}
+            {" · "}
+            {formatTime(selectedTime)}
+          </strong>
+        </div>
+      )}
 
+      {/* Actions */}
+      <div className="gt-booking-action gt-booking-action-split gt-date-actions">
         <button
           type="button"
           className="gt-booking-secondary"
@@ -210,7 +294,6 @@ export default function DateTimeSelection({
         >
           Continue to payment <span>↗</span>
         </button>
-
       </div>
 
     </div>
